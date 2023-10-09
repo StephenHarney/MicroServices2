@@ -1,15 +1,22 @@
 package com.example.microservices2;
 
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController  {
-    @PatchMapping("/RegisterUserBody")
+    @PatchMapping("RegisterUserBody")
+    @ResponseBody(HttpStatus.CREATED)
+    public User registerUserCredentials(@RequestBody User user){
+         System.out.println("User ID" +user.getUsername());
+         System.out.println("User ID:"+user.getClass());
+         return user;
+
+    }
+
 
 }
 
